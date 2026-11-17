@@ -152,8 +152,7 @@
       h('div', { class: 'codebox' }, boxes),
       h('button', { class: 'btn block', onclick: tryJoin }, 'ادخل'),
       h('div', { class: 'or' }, ''),
-      h('button', { class: 'btn ghost block', onclick: demoSheet }, '🧪 وضع تجريبي على جهاز واحد'),
-      h('p', { class: 'demo-note' }, 'الوضع التجريبي للتعرّف على الألعاب فقط — مو لعب جماعي.')));
+      h('button', { class: 'btn ghost block', onclick: demoSheet }, '🧪 وضع تجريبي على جهاز واحد')));
   }
 
   function nameForm(onDone, title, btnText) {
