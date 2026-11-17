@@ -4,7 +4,7 @@
   const { h, ar, toast, confetti, vibrate, Net, ACTS } = window.L;
 
   const CUP_SVG = (c) => `<svg viewBox="0 0 100 110"><path d="M14 6 H86 L76 104 H24 Z" fill="${c}" stroke="#22163B" stroke-width="5" stroke-linejoin="round"/><path d="M18 30 H82 M21 56 H79" stroke="#22163B" stroke-width="4" opacity=".9"/><path d="M19 30 H81 L79 56 H21 Z" fill="#fff" opacity=".85"/><ellipse cx="50" cy="6" rx="38" ry="5" fill="#22163B"/><path d="M30 64 L34 96" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".5"/></svg>`;
-  const CUP_COLORS = ['#FF5B4A', '#3D8BFF', '#19C2A0', '#8A5CF6', '#FFB627'];
+  const CUP_COLORS = ['#FF5B4A']; // لون واحد لكل الأكواب حتى ما يُحفظ اللون بدل متابعة الخلط
 
   class RoundView {
     constructor(app) { this.app = app; }
