@@ -9,7 +9,7 @@
   --safe-t: env(safe-area-inset-top, 0px); --safe-b: env(safe-area-inset-bottom, 0px);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; height: 100%; background: var(--paper); color: var(--ink); font-family: var(--body); overscroll-behavior: none; }
+html, body { touch-action: manipulation; -webkit-text-size-adjust: 100%; margin: 0; height: 100%; background: var(--paper); color: var(--ink); font-family: var(--body); overscroll-behavior: none; }
 body { min-height: 100dvh; overflow-x: hidden; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 input { -webkit-user-select: text; user-select: text; }
 #bg { position: fixed; inset: 0; z-index: -1; background:
@@ -394,3 +394,6 @@ body.full #app { padding: calc(var(--safe-t) + 58px) 0 0; max-width: none; }
 .livebar { position: relative; overflow: hidden; }
 .livebar::before { content: ''; position: absolute; inset: 0 0 0 auto; width: var(--w); background: rgba(25,194,160,.25); transition: width .2s; }
 .livebar > * { position: relative; }
+
+/* منع تكبير الصفحة بالضغط المزدوج في سفاري */
+.tapbtn, .reflex, .pad, .key, .obtn, .opt, .cup, .fcard, .tile { touch-action: manipulation; }

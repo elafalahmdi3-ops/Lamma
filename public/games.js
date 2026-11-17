@@ -140,7 +140,7 @@
       } else if ((g.mode === 'closest' || g.mode === 'taps') && g.info) {
         const rk = g.info.rank || [];
         node = h('div', { class: 'banner' },
-          h('h2', null, rk[0] ? (rk[0].id === you ? 'أنت الأقرب! 🎯' : (pm[rk[0].id] || {}).name + (g.mode === 'taps' ? ' أسرع إصبع! 👆' : ' الأقرب! 🎯')) : 'ما أحد جاوب 🤷'),
+          h('h2', null, rk[0] ? (rk[0].id === you ? (g.mode === 'taps' ? 'أنت أسرع إصبع! 👆' : 'أنت الأقرب! 🎯') : (pm[rk[0].id] || {}).name + (g.mode === 'taps' ? ' أسرع إصبع! 👆' : ' الأقرب! 🎯')) : 'ما أحد جاوب 🤷'),
           g.info.target ? h('div', { class: 'target' }, 'الصحيح:', h('b', { class: 'e', style: { fontSize: '30px' } }, g.info.target)) : null,
           h('div', { class: 'rank' }, rk.map((x, i) => { const p = pm[x.id] || {}; return h('div', { class: 'it' + (i === 0 ? ' first' : ''), style: { animationDelay: i * 0.1 + 's' } }, h('span', { class: 'p' }, ar(i + 1)), h('span', { class: 'e' }, p.emoji), p.name, h('span', { class: 'v' }, String(x.v) + (g.info.unit || '')), g.gain && g.gain[x.id] && !g.practice ? h('b', { style: { color: 'var(--mint)' } }, '+' + ar(g.gain[x.id])) : null); })));
         if (rk[0] && rk[0].id === you) confetti(70);
@@ -564,6 +564,16 @@
       if (me || this.my != null) { this.tb.textContent = 'ضغطت ✓'; this.tsub.textContent = 'ننتظر الباقين…'; }
     }
   }
+
+  // سفاري يتجاهل منع التكبير في الصفحة، فنمنع الضغط المزدوج وإيماءة التكبير بأنفسنا
+  let lastTouch = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouch < 350 && !(e.target.closest && e.target.closest('input, textarea'))) e.preventDefault();
+    lastTouch = now;
+  }, { passive: false });
+  document.addEventListener('dblclick', (e) => e.preventDefault(), { passive: false });
+  ['gesturestart', 'gesturechange'].forEach((t) => document.addEventListener(t, (e) => e.preventDefault(), { passive: false }));
 
   window.Games = { RoundView };
 })();
